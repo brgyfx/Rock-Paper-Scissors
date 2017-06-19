@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.Threading;
 
 
-namespace RPS2017
+namespace RockPaperScissors
 {
     class Program
     {
+        static int meme;
         static string memeinput;
 
         static void Creditslol()
@@ -38,6 +39,8 @@ only 14 lol pls dont judge my shitty c# code :p");
                 Console.WriteLine();
                 Console.WriteLine("The game has begun!");
                 bool runNewLoop = true;
+                int score = 0;
+                int botscore = 0;
                 int count = 3;
                 while (count > 0 && runNewLoop == true)
                 {
@@ -55,6 +58,7 @@ only 14 lol pls dont judge my shitty c# code :p");
                     {
                         botchoose = "Scissors";
                     }
+                    Console.WriteLine("Enter Rock or Paper or Scissors!");
                     string action = Console.ReadLine();
                     if (action.ToLower().Equals("paper"))
                     {
@@ -87,16 +91,18 @@ only 14 lol pls dont judge my shitty c# code :p");
                         else if (botchoose.Equals("Paper"))
                         {
                             Console.WriteLine("You lost this round!");
+
                         }
                         else if (botchoose.Equals("Scissors"))
                         {
                             Console.WriteLine("You won this round!");
+
                         }
 
                     }
                     if (action.ToLower().Equals("scissors"))
                     {
-                        Console.WriteLine("You Chose Rock!");
+                        Console.WriteLine("You Chose Scissors!");
                         Console.WriteLine("");
                         Console.WriteLine("The bot chose {0}", botchoose);
                         if (botchoose.Equals("Rock"))
@@ -113,19 +119,53 @@ only 14 lol pls dont judge my shitty c# code :p");
                         }
 
                     }
+                    if (action.ToLower().Equals("scissors") && botchoose.Equals("Rock"))
+                    {
+                        botscore++;
+                    }
+                    else if (action.ToLower().Equals("paper") && botchoose.Equals("Rock"))
+                    {
+                        score++;
+                    }
+                    else if (action.ToLower().Equals("rock") && botchoose.Equals("Paper"))
+                    {
+                        botscore++;
+                    }
+                    else if (action.ToLower().Equals("scissors") && botchoose.Equals("Paper"))
+                    {
+                        score++;
+                    }
+                    else if (action.ToLower().Equals("paper") && botchoose.Equals("Scissors"))
+                    {
+                        botscore++;
+                    }
+                    else if (action.ToLower().Equals("rock") && botchoose.Equals("Scissors"))
+                    {
+                        score++;
+                    }
                     count -= 1;
                     if (count == 0)
                     {
+                        Console.WriteLine("Your score was: {0}\n" +
+                            "The bots score was: {0}", score, botscore);
+                        if (score == botscore)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("The match was a tie!");
+                        }
                         Console.WriteLine("Would you like to keep playing");
                         string keepplayinglol = Console.ReadLine();
                         if (keepplayinglol.ToLower().Equals("yes"))
                         {
+                            botscore = 0;
+                            score = 0;
                             count += 3;
                         }
                         else
                         {
                             runNewLoop = false;
                             Main();
+
                         }
 
                     }
@@ -143,9 +183,9 @@ only 14 lol pls dont judge my shitty c# code :p");
             Console.WriteLine();
         }
 
-        static void Main(string[] args)
+        static void Main()
         {
-            throw new NotImplementedException();
+
             bool runLoop = false;
             string rusure = string.Empty;
 
@@ -171,7 +211,7 @@ only 14 lol pls dont judge my shitty c# code :p");
                 {
                     Console.WriteLine("Are you sure you want to exit?");
                     rusure = Console.ReadLine();
-                    if (rusure.Equals("Yes"))
+                    if (rusure.ToLower().Equals("yes"))
                     {
                         System.Environment.Exit(1000);
                     }
