@@ -25,8 +25,13 @@ only 14 lol pls dont judge my shitty c# code :p");
             string botchoose = string.Empty;
             Console.WriteLine("Enter Paper to use Paper, Rock to use Rock and Scissors to use Scissors");
             Console.WriteLine("Are you ready?");
-            string response = Console.ReadLine();
-            if (response.ToLower().Equals("yes"))
+            int i9 = 1;
+            while(i9 == 1)
+            {
+                string response = Console.ReadLine();
+                if (response.ToLower().Equals("yes"))
+                    i9 = 0;
+            }
             {
                 Console.WriteLine("The game will start in three seconds!");
                 Console.WriteLine();
@@ -64,10 +69,11 @@ only 14 lol pls dont judge my shitty c# code :p");
                     {
                         Console.WriteLine("You Chose Paper!");
                         Console.WriteLine("");
-                        Console.WriteLine("The bot chose {0}", botchoose);
+                        Console.WriteLine("The bot chose {0}!", botchoose);
                         if (botchoose.Equals("Rock"))
                         {
-                            Console.WriteLine("You lost this round!");
+                            Console.WriteLine("You won this round!");
+                            score++;
                         }
                         else if (botchoose.Equals("Paper"))
                         {
@@ -76,6 +82,7 @@ only 14 lol pls dont judge my shitty c# code :p");
                         else if (botchoose.Equals("Scissors"))
                         {
                             Console.WriteLine("You lost this round!");
+                            botscore++;
                         }
 
                     }
@@ -83,7 +90,7 @@ only 14 lol pls dont judge my shitty c# code :p");
                     {
                         Console.WriteLine("You Chose Rock!");
                         Console.WriteLine("");
-                        Console.WriteLine("The bot chose {0}", botchoose);
+                        Console.WriteLine("The bot chose {0}!", botchoose);
                         if (botchoose.Equals("Rock"))
                         {
                             Console.WriteLine("It's a tie! Neither of you won this round.");
@@ -91,11 +98,12 @@ only 14 lol pls dont judge my shitty c# code :p");
                         else if (botchoose.Equals("Paper"))
                         {
                             Console.WriteLine("You lost this round!");
-
+                            botscore++;
                         }
                         else if (botchoose.Equals("Scissors"))
                         {
                             Console.WriteLine("You won this round!");
+                            score++;
 
                         }
 
@@ -108,10 +116,12 @@ only 14 lol pls dont judge my shitty c# code :p");
                         if (botchoose.Equals("Rock"))
                         {
                             Console.WriteLine("You lost this round!");
+                            botscore++;
                         }
                         else if (botchoose.Equals("Paper"))
                         {
                             Console.WriteLine("You won this round!");
+                            score++;
                         }
                         else if (botchoose.Equals("Scissors"))
                         {
@@ -119,35 +129,11 @@ only 14 lol pls dont judge my shitty c# code :p");
                         }
 
                     }
-                    if (action.ToLower().Equals("scissors") && botchoose.Equals("Rock"))
-                    {
-                        botscore++;
-                    }
-                    else if (action.ToLower().Equals("paper") && botchoose.Equals("Rock"))
-                    {
-                        score++;
-                    }
-                    else if (action.ToLower().Equals("rock") && botchoose.Equals("Paper"))
-                    {
-                        botscore++;
-                    }
-                    else if (action.ToLower().Equals("scissors") && botchoose.Equals("Paper"))
-                    {
-                        score++;
-                    }
-                    else if (action.ToLower().Equals("paper") && botchoose.Equals("Scissors"))
-                    {
-                        botscore++;
-                    }
-                    else if (action.ToLower().Equals("rock") && botchoose.Equals("Scissors"))
-                    {
-                        score++;
-                    }
                     count -= 1;
                     if (count == 0)
                     {
-                        Console.WriteLine("Your score was: {0}\n" +
-                            "The bots score was: {0}", score, botscore);
+                        Console.WriteLine("Your score was: {0}", score);
+                        Console.WriteLine("The bots score was: {0}", botscore);
                         if (score == botscore)
                         {
                             Console.WriteLine();
@@ -157,8 +143,6 @@ only 14 lol pls dont judge my shitty c# code :p");
                         string keepplayinglol = Console.ReadLine();
                         if (keepplayinglol.ToLower().Equals("yes"))
                         {
-                            botscore = 0;
-                            score = 0;
                             count += 3;
                         }
                         else
