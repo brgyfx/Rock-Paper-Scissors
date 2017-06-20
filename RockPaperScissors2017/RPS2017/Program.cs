@@ -183,7 +183,7 @@ only 14 lol pls dont judge my shitty c# code :p");
                 }
                 else if (memeinput.Equals("2"))
                 {
-                    runLoop = false;
+                    runLoop = true;
                     Creditslol();
                     Thread.Sleep(1);
                     Console.ReadLine();
